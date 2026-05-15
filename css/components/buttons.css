@@ -1,0 +1,68 @@
+/**
+ * BUTTON COMPONENTS
+ * -----------------------------------------------------------------------------
+ */
+
+.btn-primary,
+.btn-secondary,
+.btn-tertiary {
+  min-width: 180px;
+  border-radius: 999px;
+  padding: 0.95rem 1.4rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    color 140ms ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e9f7ff, #a9ddff 52%, #84c6ef);
+  color: #081721;
+  font-weight: 800;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #f6fcff, #bce6ff 52%, #97d2f6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-tertiary {
+  min-width: unset;
+  border-radius: calc(var(--radius-sm) + 6px);
+  border: 1px solid rgba(190, 230, 255, 0.45);
+  background: transparent;
+  color: var(--color-accent-strong);
+  padding: 0.74rem 1rem;
+  font-weight: 600;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-secondary {
+    transition: none;
+  }
+}

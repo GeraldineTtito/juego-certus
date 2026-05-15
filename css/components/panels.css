@@ -1,0 +1,142 @@
+/**
+ * PANEL COMPONENTS
+ * -----------------------------------------------------------------------------
+ */
+
+.frame-pill,
+.hud-block,
+.hud-status,
+.overlay-panel,
+.frame-side {
+  backdrop-filter: blur(18px);
+  background: var(--color-panel);
+  border: 1px solid var(--color-panel-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.frame-pill {
+  padding: 0.56rem 0.82rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-strong);
+}
+
+/* Bloques del HUD (Heads-Up Display) */
+.hud-block {
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.05rem;
+  min-height: 84px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hud-value {
+  margin-top: var(--space-2xs);
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+  font-weight: 800;
+}
+
+.hud-status {
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-accent-strong);
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+
+/* Overlay Panels and Modals */
+.overlay-panel {
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 14, 22, 0.72),
+    rgba(7, 16, 26, 0.88)
+  );
+}
+
+.overlay-title {
+  margin: var(--space-xs) 0 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 5vw, 3.8rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.overlay-body,
+.side-copy {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.overlay-list {
+  margin: var(--space-md) 0 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.52rem;
+}
+
+.overlay-list li {
+  line-height: 1.55;
+}
+
+.overlay-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.frame-side {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    180deg,
+    rgba(4, 10, 16, 0.55),
+    rgba(8, 18, 28, 0.84)
+  );
+}
+
+/* Visibility and Transitions */
+.media-layer {
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.trailer-video {
+  display: block;
+  border-radius: calc(var(--radius-md) - 4px);
+  border: 1px solid rgba(221, 240, 255, 0.28);
+  background: #02060a;
+  box-shadow: 0 30px 80px rgba(2, 7, 12, 0.5);
+  object-fit: contain;
+  pointer-events: auto;
+}
+
+@media (max-width: 1060px) {
+  .overlay-panel {
+    padding: var(--space-lg);
+  }
+}
+
+/* Contextual States */
+.canvas-shell.is-gameplay-shell .frame-top {
+  inset: var(--space-md) var(--space-lg) auto var(--space-lg);
+}
+
+.canvas-shell.is-gameplay-shell .frame-side,
+.canvas-shell.is-trailer-shell .frame-side {
+  opacity: 0;
+  transform: translateX(28px);
+  pointer-events: none;
+}

@@ -1,0 +1,23 @@
+{
+  "name": "furia-del-slime",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "2D Beat 'em Up Nordic Campaign Engine",
+  "scripts": {
+    "dev": "serve .",
+    "check:syntax": "node scripts/check-syntax.mjs",
+    "typecheck": "tsc --project jsconfig.json --noEmit",
+    "lint": "eslint \"js/**/*.js\" \"scripts/**/*.mjs\" \"eslint.config.js\"",
+    "lint:strict": "eslint \"js/**/*.js\" \"scripts/**/*.mjs\" \"eslint.config.js\" --max-warnings=0",
+    "format": "prettier --write \"js/**/*.js\" \"scripts/**/*.mjs\" \"css/**/*.css\" \"*.html\" \"*.js\" \"*.json\"",
+    "format:check": "prettier --check \"js/**/*.js\" \"scripts/**/*.mjs\" \"css/**/*.css\" \"*.html\" \"*.js\" \"*.json\"",
+    "validate": "npm run check:syntax && npm run typecheck && npm run lint:strict && npm run format:check"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}

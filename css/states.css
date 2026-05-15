@@ -1,0 +1,62 @@
+/**
+ * STATES.CSS
+ * -----------------------------------------------------------------------------
+ * Clases que representan estados dinámicos, visibilidad e interacciones.
+ */
+
+/* Visibilidad General */
+.is-hidden {
+  display: none !important;
+}
+
+.is-invisible {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Estados de Transición de Escena */
+.scene-transition.is-visible {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Estados de Gameplay */
+.canvas-shell.is-gameplay-shell {
+  cursor: crosshair;
+}
+
+.vitality-bar-wrapper.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 30px);
+}
+
+.vitality-bar-wrapper.is-hurt-pulse .health-bar-track {
+  outline: 1px solid rgba(255, 160, 120, 0.55);
+}
+
+.hud-time-panel.is-time-critical .hud-value {
+  color: var(--color-danger);
+  animation: hudTimeGlow 780ms ease-in-out infinite alternate;
+}
+
+/* Estados de UI y Paneles */
+.canvas-shell.is-gameplay-shell .frame-side {
+  opacity: 0;
+  transform: translateX(28px);
+  pointer-events: none;
+}
+
+.canvas-shell.is-trailer-shell .frame-side {
+  opacity: 0;
+  transform: translateX(18px);
+  pointer-events: none;
+}
+
+/* Estados de Botones */
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}

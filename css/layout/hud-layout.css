@@ -1,0 +1,60 @@
+/**
+ * HUD & INTERFACE FRAMES
+ * -----------------------------------------------------------------------------
+ */
+
+.frame-top,
+.hud-panel,
+.overlay-panel,
+.frame-side {
+  position: absolute;
+  z-index: 3;
+}
+
+.frame-top {
+  inset: var(--space-lg) var(--space-lg) auto var(--space-lg);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.hud-panel {
+  top: calc(var(--space-lg) + 108px);
+  left: var(--space-lg);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  pointer-events: none;
+}
+
+.hud-time-panel {
+  position: absolute;
+  top: calc(var(--space-lg) + 108px);
+  right: var(--space-lg);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.overlay-panel {
+  left: var(--space-lg);
+  bottom: var(--space-lg);
+  width: min(470px, calc(100% - 2 * var(--space-lg)));
+}
+
+.overlay-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.frame-side {
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  width: min(290px, 28vw);
+}
+
+/* Accessibility Contrast Overrides */
+.canvas-shell[data-high-contrast="true"] .health-bar-track {
+  border-color: rgba(255, 255, 255, 0.6);
+}

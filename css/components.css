@@ -1,0 +1,13 @@
+/**
+ * COMPONENTS.CSS (AGGREGATOR)
+ * -----------------------------------------------------------------------------
+ * Sistema de componentes modularizado para mejorar la mantenibilidad.
+ * Cada módulo maneja un dominio específico de la interfaz.
+ */
+
+@import "./components/typography.css";
+@import "./components/panels.css";
+@import "./components/buttons.css";
+@import "./components/gameplay-ui.css";
+@import "./components/modals.css";
+@import "./components/forms.css";
