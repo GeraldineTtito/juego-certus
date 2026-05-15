@@ -1,0 +1,59 @@
+/**
+ * TYPOGRAPHY COMPONENTS
+ * -----------------------------------------------------------------------------
+ */
+
+/* Micro-Tipografía (Kickers, Etiquetas, Eyebrows) */
+.eyebrow,
+.overlay-kicker,
+.side-kicker,
+.hud-label {
+  margin: 0;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* Títulos Principales e Identidad Visual */
+.brand-block h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(3.1rem, 7vw, 5.2rem);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.frame-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+}
+
+.frame-top,
+.frame-side,
+.brand-block h1,
+.eyebrow {
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    font-size 180ms ease;
+}
+
+@media (max-width: 1060px) {
+  .frame-meta {
+    justify-content: flex-start;
+  }
+}
+
+/* Contextual Typography (Active Gameplay) */
+.canvas-shell.is-gameplay-shell .brand-block h1 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.canvas-shell.is-gameplay-shell .eyebrow {
+  opacity: 0.72;
+}

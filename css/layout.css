@@ -1,0 +1,12 @@
+/**
+ * LAYOUT.CSS (AGGREGATOR)
+ * -----------------------------------------------------------------------------
+ * Estructuras de diseño principales modularizadas.
+ * Organiza el posicionamiento, capas y adaptabilidad del visor.
+ */
+
+@import "./layout/shell.css";
+@import "./layout/media.css";
+@import "./layout/hud-layout.css";
+@import "./layout/transitions.css";
+@import "./layout/responsive.css";

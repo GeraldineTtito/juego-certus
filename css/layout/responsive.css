@@ -1,0 +1,74 @@
+/**
+ * RESPONSIVE DESIGN ADJUSTMENTS
+ * -----------------------------------------------------------------------------
+ */
+
+/* Viewports de Rango Medio (Tablets/Laptops Pequeños) */
+@media (max-width: 1060px) {
+  .canvas-shell {
+    height: min(calc(100vh - var(--space-md) * 2), 860px);
+  }
+
+  .frame-top {
+    gap: var(--space-md);
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hud-panel {
+    top: calc(var(--space-lg) + 152px);
+    flex-wrap: wrap;
+  }
+
+  .hud-time-panel {
+    top: calc(var(--space-lg) + 152px);
+  }
+
+  .frame-side {
+    display: none;
+  }
+}
+
+/* Viewports Móviles */
+@media (max-width: 720px) {
+  .app-shell {
+    padding: var(--space-sm);
+  }
+
+  .experience-shell {
+    min-height: calc(100vh - var(--space-sm) * 2);
+  }
+
+  .canvas-shell {
+    height: min(calc(100vh - var(--space-sm) * 2), 760px);
+    border-radius: 24px;
+  }
+
+  .frame-top {
+    inset: var(--space-md) var(--space-md) auto var(--space-md);
+  }
+
+  .hud-panel {
+    top: calc(var(--space-md) + 132px);
+    left: var(--space-md);
+    right: var(--space-md);
+    gap: var(--space-xs);
+    flex-direction: column;
+  }
+
+  .hud-time-panel {
+    top: calc(var(--space-md) + 132px);
+    right: var(--space-md);
+  }
+
+  .overlay-panel {
+    left: var(--space-md);
+    right: var(--space-md);
+    bottom: var(--space-md);
+    width: auto;
+  }
+
+  .media-layer {
+    padding: calc(var(--space-md) + 104px) var(--space-md) 260px;
+  }
+}

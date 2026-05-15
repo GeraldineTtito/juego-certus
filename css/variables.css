@@ -1,0 +1,53 @@
+/**
+ * VARIABLES.CSS
+ * -----------------------------------------------------------------------------
+ * Tokens del sistema de diseño, variables CSS y estilos globales base.
+ * Define la identidad visual incluyendo colores, tipografía y espaciado.
+ */
+
+:root {
+  /* Paleta de Colores - Tonos Pizarra y Océano Profundo */
+  color-scheme: dark;
+  --color-bg: #050b11;
+  --color-bg-strong: #07131d;
+  --color-panel: rgba(5, 14, 22, 0.68);
+  --color-panel-strong: rgba(8, 18, 29, 0.86);
+  --color-panel-border: rgba(207, 230, 255, 0.16);
+  --color-panel-border-strong: rgba(232, 243, 255, 0.28);
+
+  /* Colores Funcionales */
+  --color-text: #eef4fb;
+  --color-text-muted: #a8b8cb;
+  --color-accent: #bfe8ff;
+  --color-accent-strong: #f3fbff;
+  --color-danger: #ff8f81;
+
+  /* Sombras y Efectos */
+  --color-shadow: rgba(0, 0, 0, 0.42);
+  --color-shadow-strong: rgba(0, 0, 0, 0.62);
+
+  /* Tipografía - Mezcla Profesional Serif/Sans-Serif */
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+
+  /* Tokens de Diseño - Radios de Borde */
+  --radius-sm: 14px;
+  --radius-md: 24px;
+  --radius-lg: 34px;
+
+  /* Tokens de Diseño - Espaciado */
+  --space-2xs: 0.375rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 1.8rem;
+  --space-xl: 2.8rem;
+  --space-2xl: 4rem;
+
+  /* Sombras Avanzadas y Degradados */
+  --shadow-soft: 0 24px 60px var(--color-shadow);
+  --shadow-hard: 0 40px 110px var(--color-shadow-strong);
+  --shell-gradient:
+    radial-gradient(circle at top, rgba(130, 170, 216, 0.18), transparent 32%),
+    linear-gradient(180deg, #0a1722 0%, #04090d 55%, #030608 100%);
+}

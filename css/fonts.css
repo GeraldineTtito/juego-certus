@@ -1,0 +1,21 @@
+/**
+ * FONTS.CSS
+ * -----------------------------------------------------------------------------
+ * Tipografias locales servidas desde el proyecto para evitar dependencias remotas.
+ */
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../assets/fonts/cormorant-garamond-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../assets/fonts/manrope-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+}

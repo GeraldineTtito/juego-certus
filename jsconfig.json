@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "checkJs": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "allowJs": true,
+    "baseUrl": "./",
+    "paths": {
+      "*": ["js/*"]
+    }
+  },
+  "include": ["js/**/*.js"],
+  "exclude": ["node_modules", "dist", "build", "assets", "coverage"]
+}

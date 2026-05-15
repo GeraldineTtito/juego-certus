@@ -1,0 +1,76 @@
+/**
+ * SHELL & CANVAS LAYOUT
+ * -----------------------------------------------------------------------------
+ */
+
+.app-shell {
+  min-height: 100vh;
+  padding: var(--space-md);
+}
+
+.experience-shell {
+  min-height: calc(100vh - var(--space-md) * 2);
+}
+
+.canvas-shell {
+  position: relative;
+  width: min(100%, 1520px);
+  height: min(calc(100vh - var(--space-md) * 2), 920px);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-panel-border);
+  background: linear-gradient(
+    180deg,
+    rgba(6, 13, 19, 0.94),
+    rgba(3, 8, 12, 0.98)
+  );
+  box-shadow: var(--shadow-hard);
+  isolation: isolate;
+}
+
+.canvas-shell.is-gameplay-shell {
+  box-shadow:
+    inset 0 0 140px rgba(255, 120, 64, 0.08),
+    inset 0 -120px 130px rgba(2, 4, 8, 0.42),
+    var(--shadow-hard);
+}
+
+.canvas-shell.is-gameplay-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at 50% 12%,
+      transparent 54%,
+      rgba(4, 6, 10, 0.28) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(150, 200, 255, 0.05) 0%,
+      rgba(255, 90, 32, 0.05) 100%
+    );
+  mix-blend-mode: soft-light;
+  opacity: 0.48;
+}
+
+.canvas-shell.is-gameplay-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 200, 150, 0.04);
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #02060a;
+}

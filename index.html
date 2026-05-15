@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Configuración técnica y metadatos del sitio -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Videojuego web de campaña hecho con HTML5, CSS3 y JavaScript Vanilla."
+    />
+    <title>Furia del Slime | Campaña</title>
+    <meta name="theme-color" content="#050b11" />
+
+    <!-- Sistema de Diseño Modular -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/states.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="experience-shell">
+        <!-- Contenedor principal de la experiencia de juego -->
+        <section class="canvas-shell" aria-label="Juego">
+          <!-- Capa de efectos visuales para transiciones de escena -->
+          <div
+            id="scene-transition"
+            class="scene-transition"
+            aria-hidden="true"
+          ></div>
+
+          <!-- Canvas: Motor de renderizado del juego -->
+          <canvas
+            id="game-canvas"
+            width="1280"
+            height="720"
+            aria-label="Lienzo principal del juego"
+          >
+            Tu navegador no soporta Canvas. Usa un navegador moderno para jugar
+            Furia del Slime.
+          </canvas>
+
+          <!-- Capa multimedia: Tráilers y cinemáticas pre-renderizadas -->
+          <div
+            class="media-layer is-hidden"
+            id="media-layer"
+            aria-live="polite"
+          >
+            <video
+              id="campaign-trailer"
+              class="trailer-video"
+              preload="metadata"
+              poster="./assets/images/posters/trailer-poster.webp"
+              controls
+              playsinline
+            >
+              <track
+                kind="captions"
+                src="./assets/media/subtitles_es.vtt"
+                srclang="es"
+                label="Español"
+                default
+              />
+            </video>
+          </div>
+
+          <!-- Panel informativo lateral (Contexto y Lore) -->
+          <aside class="frame-side">
+            <p class="side-kicker">Tu misión</p>
+            <p class="side-copy">
+              Sobrevive a las oleadas, castiga a las deidades corruptas y
+              reclama el control total de los cinco reinos caídos.
+            </p>
+          </aside>
+
+          <!-- Cabecera de la interfaz: Branding y Metadatos de la campaña -->
+          <header class="frame-top">
+            <div class="brand-block">
+              <p class="eyebrow">Saga de redención nórdica</p>
+              <h1>Furia del Slime</h1>
+            </div>
+
+            <div class="frame-meta" aria-label="Características del juego">
+              <span class="frame-pill">Acción</span>
+              <span class="frame-pill">Hack 'n' Slash</span>
+              <span class="frame-pill">Supervivencia</span>
+              <span class="frame-pill">Mitos Nórdicos</span>
+            </div>
+          </header>
+
+          <!-- HUD principal: Seguimiento de objetivos y progreso local -->
+          <div class="hud-panel is-hidden" id="hud-panel" aria-live="polite">
+            <div class="hud-block">
+              <span class="hud-label">Reino</span>
+              <span class="hud-value" id="hud-level">-</span>
+            </div>
+            <div class="hud-block">
+              <span class="hud-label">Objetivo</span>
+              <span class="hud-value" id="hud-objective">-</span>
+            </div>
+            <div class="hud-status" id="hud-status">Preparando escena...</div>
+          </div>
+
+          <!-- Panel de tiempo: Temporizador de misiones críticas -->
+          <div class="hud-time-panel is-hidden" id="hud-time-panel">
+            <div class="hud-block">
+              <span class="hud-label">Tiempo</span>
+              <span class="hud-value" id="hud-time">-</span>
+            </div>
+          </div>
+
+          <!-- Barra de Vitalidad: Visualización dinámica de salud del jugador -->
+          <div class="vitality-bar-wrapper is-hidden" id="vitality-bar-wrapper">
+            <div class="health-bar-track">
+              <div class="health-bar-fill" id="health-bar-fill"></div>
+            </div>
+            <span class="health-value" id="hud-health">-</span>
+          </div>
+
+          <!-- Menú de campaña: Entrada principal y selección de acciones -->
+          <section class="overlay-panel" id="overlay-panel" aria-live="polite">
+            <p class="overlay-kicker" id="overlay-kicker">Campaña</p>
+            <h2 class="overlay-title" id="overlay-title">Furia del Slime</h2>
+            <p class="overlay-body" id="overlay-body">
+              Base modular para una campaña de combate en tercera persona hecha
+              solo con HTML, CSS y JavaScript.
+            </p>
+            <ul class="overlay-list" id="overlay-list"></ul>
+            <div class="overlay-actions">
+              <button class="btn-primary" id="start-btn" type="button">
+                Iniciar campaña
+              </button>
+              <button
+                class="btn-tertiary"
+                id="tertiary-btn"
+                type="button"
+                hidden
+              >
+                Opciones
+              </button>
+              <button
+                class="btn-secondary"
+                id="secondary-btn"
+                type="button"
+                hidden
+              >
+                Reiniciar
+              </button>
+            </div>
+          </section>
+
+          <!-- Modal de Felicitaciones -->
+          <dialog
+            id="congrats-modal"
+            class="congrats-modal"
+            aria-labelledby="congrats-title"
+          >
+            <div
+              id="confetti-canvas"
+              class="confetti-canvas"
+              aria-hidden="true"
+            ></div>
+            <div class="congrats-card">
+              <p class="congrats-kicker">&#127881; &#161;Nivel completado!</p>
+              <h2 class="congrats-title" id="congrats-title">
+                &#161;Felicidades por completar el nivel 1!
+              </h2>
+              <p class="congrats-realm" id="congrats-realm">Midgard Purgado</p>
+              <button
+                class="btn-primary congrats-next-btn"
+                id="congrats-next-btn"
+                type="button"
+              >
+                Siguiente
+              </button>
+            </div>
+          </dialog>
+
+          <!-- Panel de Configuración: Ajustes técnicos y de accesibilidad -->
+          <form
+            class="settings-panel is-hidden"
+            id="settings-panel"
+            aria-label="Ajustes técnicos y de accesibilidad del juego"
+          >
+            <header class="settings-heading">
+              <div>
+                <p class="eyebrow">Controles persistentes</p>
+                <h2 class="settings-title">Cabina táctica del slime</h2>
+                <p class="settings-intro">
+                  Aquí decides dificultad, volumen procedural y comportamiento
+                  del cursor antes de regresar al frente.
+                </p>
+              </div>
+              <button class="btn-secondary" id="settings-close" type="button">
+                Volver al menú
+              </button>
+            </header>
+
+            <!-- Formulario de Ajustes: Grid de campos dinámicos -->
+            <div class="settings-grid">
+              <label class="settings-field">
+                <span>Dificultad</span>
+                <select id="setting-difficulty" name="difficulty">
+                  <option value="easy">
+                    Explorador (+ tiempo / - tensión)
+                  </option>
+                  <option value="normal">Equilibrio nórdico</option>
+                  <option value="hard">Tempestad implacable</option>
+                </select>
+              </label>
+              <label class="settings-field">
+                <span>Sensibilidad de mirada</span>
+                <input
+                  id="setting-mouse"
+                  name="mouseSensitivity"
+                  type="range"
+                  min="0.45"
+                  max="2.2"
+                  step="0.05"
+                  value="1"
+                />
+              </label>
+              <label class="settings-toggle">
+                <input id="setting-invert" name="invertLookY" type="checkbox" />
+                <span>Invertir eje vertical de cámara</span>
+              </label>
+              <label class="settings-field">
+                <span>Volumen ambiente sintetizado</span>
+                <input
+                  id="setting-ambient"
+                  name="ambientVolume"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.92"
+                />
+              </label>
+              <label class="settings-field">
+                <span>Volumen efectos cortos</span>
+                <input
+                  id="setting-sfx"
+                  name="sfxVolume"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.85"
+                />
+              </label>
+              <label class="settings-field">
+                <span>Mezcla musical (afina el drone)</span>
+                <input
+                  id="setting-music"
+                  name="musicVolume"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.82"
+                />
+              </label>
+              <label class="settings-toggle">
+                <input
+                  id="setting-contrast"
+                  name="highContrastHud"
+                  type="checkbox"
+                />
+                <span>HUD de alto contraste</span>
+              </label>
+              <label class="settings-field">
+                <span>Modo de movimiento reducido</span>
+                <select id="setting-motion" name="reducedMotion">
+                  <option value="auto">Seguir al sistema</option>
+                  <option value="on">Forzar reducción</option>
+                  <option value="off">Desactivar aviso</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Herramientas de Gestión de Datos -->
+            <div class="settings-tools">
+              <button class="btn-primary" id="settings-save" type="button">
+                Guardar preferencias
+              </button>
+              <button class="btn-secondary" id="settings-reset" type="button">
+                Restablecer
+              </button>
+              <button
+                class="btn-secondary"
+                id="settings-export"
+                type="button"
+                aria-label="Exportar progreso actual a texto"
+              >
+                Exportar progreso
+              </button>
+              <button
+                class="btn-secondary"
+                id="settings-import"
+                type="button"
+                aria-label="Importar progreso desde texto pegado"
+              >
+                Importar progreso
+              </button>
+            </div>
+            <label class="settings-field full">
+              <span>Pegar JSON de respaldo</span>
+              <textarea
+                id="settings-import-field"
+                rows="4"
+                spellcheck="false"
+                placeholder='{ "version": 2, ... }'
+              ></textarea>
+            </label>
+            <output
+              class="settings-status"
+              id="settings-status"
+              for="settings-save settings-reset settings-export settings-import"
+            ></output>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <!-- Inicialización del motor de la aplicación (Módulo principal) -->
+    <script type="module" src="./js/app/bootstrap.js"></script>
+  </body>
+</html>
